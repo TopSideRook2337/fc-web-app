@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('sectors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('stadium_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('color')->default('#cccccc');
+            $table->decimal('price_per_seat', 8, 2);
+            $table->string('seat_type')->default('regular'); // regular, vip, disabled
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->string('role')->default('user');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sectors');
     }
 };
