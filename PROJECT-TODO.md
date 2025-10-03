@@ -53,11 +53,11 @@
 
 | Задача | Статус |
 |-------|--------|
-| Создать контроллеры API: `Api\PostController` | ☐ |
-| Создать контроллеры API: `Api\MatchController` | ☐ |
-| Создать контроллеры API: `Api\SeatController` | ☐ |
-| Создать контроллеры API: `Api\OrderController` | ☐ |
-| Реализовать маршруты `/api/posts`, `/api/matches`, `/api/seats/{match}` | ☐ |
+| Создать контроллеры API: `Api\PostController` | ✅ |
+| Создать контроллеры API: `Api\MatchController` | ✅ |
+| Создать контроллеры API: `Api\SeatController` | ✅ |
+| Создать контроллеры API: `Api\OrderController` | ✅ |
+| Реализовать маршруты `/api/posts`, `/api/matches`, `/api/seats/{match}` | ✅ |
 | Добавить пагинацию и фильтрацию (по дате, статусу) | ☐ |
 | Настроить Sanctum: защита роутов, создание токена для админа | ☐ |
 | Протестировать API через Postman / Thunder Client | ☐ |
