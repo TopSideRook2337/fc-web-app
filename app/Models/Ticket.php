@@ -10,4 +10,11 @@ class Ticket extends Model
     use HasFactory;
 
     protected $table = 'tickets';
+    protected $guarded = false;
+
+
+    public function game()
+    {
+        return $this->belongsTo(Game::class, 'game_id');
+    }
 }

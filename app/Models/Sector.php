@@ -10,4 +10,15 @@ class Sector extends Model
     use HasFactory;
 
     protected $table = 'sectors';
+    protected $guarded = false;
+
+    public function stadium()
+    {
+        return $this->belongsTo(Stadium::class);
+    }
+
+    public function seats()
+    {
+        return $this->hasMany(Seat::class);
+    }
 }

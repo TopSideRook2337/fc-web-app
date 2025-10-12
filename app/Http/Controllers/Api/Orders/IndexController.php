@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $orders = $request->user()->orders()->with('tickets.match')->get();
+        $orders = $request->user()->orders()->with('tickets.game')->get();
 
         return response()->json($orders);
     }

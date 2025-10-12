@@ -12,15 +12,15 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function __invoke(Request $request, $matchId)
+    public function __invoke(Request $request, $gameId)
     {
-        $match = Game::findOrFail($matchId);
+        $game = Game::findOrFail($gameId);
 
-        $allSeats = Seat::whereHas('sector.stadium.matches', function ($q) use ($matchId) {
-            $q->where('matches.id', $matchId);
+        $allSeats = Seat::whereHas('sector.stadium.games', function ($q) use ($gameId) {
+            $q->where('games.id', $gameId);
         })->with('sector')->get();
 
-        $soldSeatIds = Ticket::where('match_id', $matchId)
+        $soldSeatIds = Ticket::where('game_id', $gameId)
             ->whereIn('status', ['paid', 'reserved'])
             ->pluck('seat_id');
 

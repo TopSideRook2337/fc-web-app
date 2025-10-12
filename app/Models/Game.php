@@ -12,4 +12,10 @@ class Game extends Model
     use Filterable;
 
     protected $table = 'games';
+    protected $guarded = false;
+
+    public function stadium()
+    {
+        return $this->belongsTo(Stadium::class);
+    }
 }
