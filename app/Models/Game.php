@@ -14,6 +14,10 @@ class Game extends Model
     protected $table = 'games';
     protected $guarded = false;
 
+    protected $casts = [
+        'start_at' => 'datetime',
+    ];
+
     public function stadium()
     {
         return $this->belongsTo(Stadium::class);

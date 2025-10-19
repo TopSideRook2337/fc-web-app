@@ -11,6 +11,10 @@ class Stadium extends Model
 
     protected $table = 'stadiums';
     protected $guarded = false;
+    
+    protected $casts = [
+        'sector_coordinates' => 'array',
+    ];
 
     public function sectors()
     {

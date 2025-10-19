@@ -12,6 +12,16 @@ class Order extends Model
     protected $table = 'orders';
     protected $guarded = false;
 
+    protected $casts = [
+        'paid_at' => 'datetime',
+        'expires_at' => 'datetime',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function tickets()
     {
         return $this->hasMany(\App\Models\Ticket::class);

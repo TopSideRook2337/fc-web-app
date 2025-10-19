@@ -12,6 +12,10 @@ class Ticket extends Model
     protected $table = 'tickets';
     protected $guarded = false;
 
+    protected $casts = [
+        'reservation_expires_at' => 'datetime',
+    ];
+
 
     public function game()
     {

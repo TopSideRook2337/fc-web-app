@@ -21,6 +21,9 @@ yarn-error.log
 /storage/framework/cache/data/*
 /bootstrap/cache/*.php
 
+# Project files
+PROJECT-TODO.md
+
 # OS
 .DS_Store
 Thumbs.db
