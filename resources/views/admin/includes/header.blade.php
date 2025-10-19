@@ -10,10 +10,17 @@
         </li>
     </ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <!-- User Dropdown Menu -->
-        <li class="nav-item dropdown">
+           <!-- Right navbar links -->
+           <ul class="navbar-nav ml-auto">
+               <!-- Theme Toggle Button -->
+               <li class="nav-item">
+                   <button class="theme-toggle" id="theme-toggle" title="Переключить тему">
+                       <i class="fas fa-moon"></i>
+                   </button>
+               </li>
+               
+               <!-- User Dropdown Menu -->
+               <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i> {{ auth()->user()->name ?? 'Администратор' }}
             </a>
