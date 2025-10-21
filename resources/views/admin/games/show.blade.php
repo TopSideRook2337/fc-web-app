@@ -162,7 +162,7 @@
                                 <strong>{{ $game->stadium->name ?? 'Не указан' }}</strong>
                                 @if($game->stadium)
                                     <br><small>{{ $game->stadium->address }}</small>
-                                    <br><small>Вместимость: {{ $game->stadium->total_capacity }} мест</small>
+                                    <br><small>Вместимость: {{ $game->stadium->capacity }} мест</small>
                                 @endif
                             </p>
                         </div>
@@ -243,8 +243,8 @@
                     <h6>{{ $game->stadium->name }}</h6>
                     <p class="text-muted">
                         <i class="fa fa-map-marker-alt"></i> {{ $game->stadium->address }}<br>
-                        <i class="fa fa-users"></i> {{ $game->stadium->total_capacity }} мест<br>
-                        <i class="fa fa-flag"></i> {{ $game->stadium->is_active ? 'Активен' : 'Неактивен' }}
+                        <i class="fa fa-users"></i> {{ $game->stadium->capacity }} мест<br>
+                        <i class="fa fa-flag"></i> Стадион
                     </p>
                 </div>
             </div>

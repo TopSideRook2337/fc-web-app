@@ -30,7 +30,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->routeIs('admin.posts.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.posts.index') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>Список новостей</p>
                             </a>
@@ -64,6 +64,31 @@
                             <a href="{{ route('admin.games.create') }}" class="nav-link {{ request()->routeIs('admin.games.create') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Создать матч</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Стадионы -->
+                <li class="nav-item {{ request()->routeIs('admin.stadiums.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.stadiums.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>
+                            Стадионы
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.stadiums.index') }}" class="nav-link {{ request()->routeIs('admin.stadiums.index') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Список стадионов</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.stadiums.create') }}" class="nav-link {{ request()->routeIs('admin.stadiums.create') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Создать стадион</p>
                             </a>
                         </li>
                     </ul>

@@ -67,7 +67,7 @@
 ## ✅ Этап 4: Админ-панель (AdminLTE)
 
 | Задача | Статус |
-|-------|--------|
+|-------|---|
 | Установить AdminLTE: `composer require jeroennoten/laravel-adminlte` | ✅ |
 | Запустить установку: `php artisan adminlte:install` | ✅ |
 | Настроить конфигурацию AdminLTE (цвета, логотип) | ✅ |
@@ -84,11 +84,11 @@
 | Реализовать серверную фильтрацию и сортировку | ✅ |
 | Добавить пагинацию Bootstrap | ✅ |
 | **Games (Матчи):** | |
-| Создать контроллеры: `Admin\Games\IndexController, CreateController, StoreController, ShowController, EditController, UpdateController, DestroyController` | ☐ |
-| Создать сервисы: `Admin\Services\GameService` (store, update) | ☐ |
-| Создать реквесты: `Admin\Requests\Games\StoreRequest, UpdateRequest` | ☐ |
-| Создать фильтр: `Admin\Filters\Games\GameFilter` | ☐ |
-| Создать шаблоны: `admin.games.index, show, create, edit` | ☐ |
+| Создать контроллеры: `Admin\Games\IndexController, CreateController, StoreController, ShowController, EditController, UpdateController, DestroyController` | ✅ |
+| Создать сервисы: `Admin\Services\GameService` (store, update) | ✅ |
+| Создать реквесты: `Admin\Requests\Games\StoreRequest, UpdateRequest` | ✅ |
+| Создать фильтр: `Admin\Filters\Games\GameFilter` | ✅ |
+| Создать шаблоны: `admin.games.index, show, create, edit` | ✅ |
 | **Stadiums (Стадионы) - Интерактивные схемы:** | |
 | Создать контроллеры: `Admin\Stadiums\IndexController, CreateController, StoreController, ShowController, EditController, UpdateController, DestroyController` | ☐ |
 | Создать сервисы: `Admin\Services\StadiumService` (store, update) | ☐ |

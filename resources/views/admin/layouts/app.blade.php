@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -46,6 +48,11 @@
             --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --table-header-hover-bg: #F3F4F6;
+            --table-header-hover-text: #111827;
+            --table-header-hover-border: #D1D5DB;
+            --table-sort-icon: #6B7280;
+            --table-sort-icon-hover: #374151;
         }
         
         .dark {
@@ -70,6 +77,11 @@
             --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4);
             --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.4);
             --shadow-xl: 0 10px 15px rgba(0, 0, 0, 0.4);
+            --table-header-hover-bg: #374151;
+            --table-header-hover-text: #FFFFFF;
+            --table-header-hover-border: #4B5563;
+            --table-sort-icon: #9CA3AF;
+            --table-sort-icon-hover: #FFFFFF;
         }
         
         /* Базовые стили с использованием переменных */
@@ -129,6 +141,22 @@
             background-color: var(--border-light);
             color: var(--text-primary);
             border-color: var(--border-color);
+            transition: all 0.2s ease;
+        }
+        
+        .table thead th:hover {
+            background-color: var(--table-header-hover-bg);
+            color: var(--table-header-hover-text);
+            border-bottom: 1px solid var(--table-header-hover-border);
+        }
+        
+        .table thead th .sort-icon {
+            color: var(--table-sort-icon);
+            transition: color 0.2s ease;
+        }
+        
+        .table thead th:hover .sort-icon {
+            color: var(--table-sort-icon-hover);
         }
         
         .table tbody tr:nth-child(even) {
@@ -249,6 +277,60 @@
         .theme-toggle:focus {
             outline: none;
             box-shadow: 0 0 0 2px var(--accent-primary);
+        }
+        
+        /* Pagination styles */
+        .pagination {
+            --pagination-bg: #ffffff;
+            --pagination-text: #374151;
+            --pagination-border: #d1d5db;
+            --pagination-active-bg: #3b82f6;
+            --pagination-active-text: #ffffff;
+            --pagination-arrow: #6b7280;
+        }
+
+        .dark .pagination {
+            --pagination-bg: #1f2937;
+            --pagination-text: #ffffff;
+            --pagination-border: #374151;
+            --pagination-active-bg: #3b82f6;
+            --pagination-active-text: #ffffff;
+            --pagination-arrow: #9ca3af;
+        }
+
+        .pagination .page-link {
+            background-color: var(--pagination-bg);
+            color: var(--pagination-text);
+            border: 1px solid var(--pagination-border);
+            border-radius: 4px;
+            padding: 0.5rem 0.75rem;
+            margin: 0 2px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .pagination .page-link:hover {
+            background-color: var(--pagination-bg);
+            color: var(--pagination-text);
+            border-color: var(--pagination-border);
+            opacity: 0.8;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--pagination-active-bg);
+            color: var(--pagination-active-text);
+            border-color: var(--pagination-active-bg);
+        }
+
+        .pagination .page-item.disabled .page-link {
+            color: var(--pagination-arrow);
+            background-color: var(--pagination-bg);
+            border-color: var(--pagination-border);
+        }
+
+        .pagination .page-link:focus {
+            box-shadow: none;
+            outline: none;
         }
     </style>
     

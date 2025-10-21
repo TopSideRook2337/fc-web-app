@@ -19,7 +19,7 @@ class IndexController extends Controller
             $request->merge(['sort_by' => 'created_at', 'sort_direction' => 'desc']);
         }
         
-        $posts = Post::filter(new PostFilter($request->all()))
+        $posts = Post::filter(new PostFilter($request))
             ->paginate($perPage)
             ->appends($request->query());
 

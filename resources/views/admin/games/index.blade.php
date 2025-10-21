@@ -108,7 +108,7 @@
                             <div class="col-md-2">
                                 <select class="form-control" name="stadium_id" id="stadium-filter">
                                     <option value="">Все стадионы</option>
-                                    @foreach(\App\Models\Stadium::where('is_active', true)->get() as $stadium)
+                                    @foreach($stadiums as $stadium)
                                         <option value="{{ $stadium->id }}" {{ request('stadium_id') == $stadium->id ? 'selected' : '' }}>
                                             {{ $stadium->name }}
                                         </option>
