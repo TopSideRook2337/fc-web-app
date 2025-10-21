@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Games;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Admin\Games\GameFilter;
 use App\Models\Game;
+use App\Models\Stadium;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -20,10 +21,12 @@ class IndexController extends Controller
         }
         
         $games = Game::with('stadium')
-            ->filter(new GameFilter($request->all()))
+            ->filter(new GameFilter($request))
             ->paginate($perPage)
             ->appends($request->query());
 
-        return view('admin.games.index', compact('games'));
+        $stadiums = Stadium::all();
+
+        return view('admin.games.index', compact('games', 'stadiums'));
     }
 }

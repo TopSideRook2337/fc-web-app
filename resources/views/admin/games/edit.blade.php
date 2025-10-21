@@ -180,7 +180,7 @@
                                         <option value="">Выберите стадион</option>
                                         @foreach($stadiums as $stadium)
                                             <option value="{{ $stadium->id }}" {{ old('stadium_id', $game->stadium_id) == $stadium->id ? 'selected' : '' }}>
-                                                {{ $stadium->name }} ({{ $stadium->total_capacity }} мест)
+                                                {{ $stadium->name }} ({{ $stadium->capacity }} мест)
                                             </option>
                                         @endforeach
                                     </select>

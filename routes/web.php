@@ -48,17 +48,16 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     });
 //
 //
-//    // Stadiums (Стадионы) - TODO
-//
-//    Route::group(['namespace' => 'App\Http\Controllers\Admin\Stadiums', 'prefix' => 'stadiums', 'as' => 'stadiums.'], function () {
-//        Route::get('/', 'IndexController')->name('admin.stadiums.index');
-//        Route::get('/create', 'CreateController')->name('admin.stadiums.create');
-//        Route::post('/', 'StoreController')->name('admin.stadiums.store');
-//        Route::get('/{stadium}', 'ShowController')->name('admin.stadiums.show');
-//        Route::get('/{stadium}/edit', 'EditController')->name('admin.stadiums.edit');
-//        Route::put('/{stadium}', 'UpdateController')->name('admin.stadiums.update');
-//        Route::delete('/{stadium}', 'DestroyController')->name('admin.stadiums.destroy');
-//    });
+//    // Stadiums (Стадионы)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Stadiums', 'prefix' => 'stadiums', 'as' => 'stadiums.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/create', 'CreateController')->name('create');
+        Route::post('/', 'StoreController')->name('store');
+        Route::get('/{stadium}', 'ShowController')->name('show');
+        Route::get('/{stadium}/edit', 'EditController')->name('edit');
+        Route::put('/{stadium}', 'UpdateController')->name('update');
+        Route::delete('/{stadium}', 'DestroyController')->name('destroy');
+    });
 //
 //
 //    // Orders (Заказы) - TODO

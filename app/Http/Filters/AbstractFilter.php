@@ -3,15 +3,20 @@
 namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 abstract class AbstractFilter implements FilterInterface
 {
     /** @var array */
     private $queryParams = [];
+    
+    /** @var Request */
+    private $request;
 
-    public function __construct(array $queryParams)
+    public function __construct(Request $request)
     {
-        $this->queryParams = $queryParams;
+        $this->request = $request;
+        $this->queryParams = $request->query();
     }
 
     abstract protected function getCallbacks(): array;
