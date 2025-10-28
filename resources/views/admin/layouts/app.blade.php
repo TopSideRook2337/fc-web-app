@@ -7,6 +7,29 @@
 
     <title>@yield('title', 'Админ-панель') - {{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Инлайн-скрипт для немедленного применения темы (до загрузки CSS) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('admin-theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <!-- Инлайн-стили для предотвращения белой вспышки -->
+    <style>
+        html {
+            background-color: #111827 !important;
+        }
+        html:not(.dark) {
+            background-color: #F9FAFB !important;
+        }
+        body {
+            background-color: inherit !important;
+        }
+    </style>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -85,17 +108,23 @@
         }
         
         /* Базовые стили с использованием переменных */
-        * {
-            transition: all 0.3s ease;
-        }
-        
         body {
             background-color: var(--bg-primary) !important;
             color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .content-wrapper {
             background-color: var(--bg-primary);
+            transition: background-color 0.3s ease;
+        }
+        
+        .card, .info-box, .small-box {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .table {
+            transition: background-color 0.3s ease;
         }
         
         .main-header {
@@ -416,9 +445,10 @@
             }
             
             init() {
-                // Загружаем сохранённую тему
+                // Тема уже применена инлайн-скриптом в <head>
+                // Здесь только обновляем иконку кнопки и инициализируем обработчик
                 const savedTheme = localStorage.getItem(this.themeKey) || 'light';
-                this.setTheme(savedTheme);
+                this.updateToggleIcon(savedTheme);
                 
                 // Инициализируем кнопку переключения
                 this.initToggleButton();
