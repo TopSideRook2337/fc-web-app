@@ -16,4 +16,9 @@ class Seat extends Model
     {
         return $this->belongsTo(Sector::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

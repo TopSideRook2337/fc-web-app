@@ -58,16 +58,31 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         Route::put('/{stadium}', 'UpdateController')->name('update');
         Route::delete('/{stadium}', 'DestroyController')->name('destroy');
     });
-//
-//
-//    // Orders (Заказы) - TODO
-//
-//    Route::group(['namespace' => 'App\Http\Controllers\Admin\Orders', 'prefix' => 'orders', 'as' => 'orders.'], function () {
-//        Route::get('/', 'IndexController')->name('admin.orders.index');
-//        Route::get('/{order}', 'ShowController')->name('admin.orders.show');
-//        Route::get('/{order}/edit', 'EditController')->name('admin.orders.edit');
-//        Route::put('/{order}', 'UpdateController')->name('admin.orders.update');
-//    });
+
+    // Stadium Schemes (Схемы стадионов)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\StadiumSchemes', 'prefix' => 'stadium-schemes', 'as' => 'stadium-schemes.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/upload', 'UploadController')->name('upload');
+        Route::post('/', 'StoreController')->name('store');
+        Route::get('/{stadium}/preview', 'PreviewController')->name('preview');
+        Route::get('/{stadium}/edit', 'EditController')->name('edit');
+        Route::put('/{stadium}', 'UpdateController')->name('update');
+    });
+
+    // Orders (Заказы)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Orders', 'prefix' => 'orders', 'as' => 'orders.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/{order}', 'ShowController')->name('show');
+        Route::get('/{order}/edit', 'EditController')->name('edit');
+        Route::put('/{order}', 'UpdateController')->name('update');
+    });
+
+    // Tickets (Билеты)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Tickets', 'prefix' => 'tickets', 'as' => 'tickets.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/{game}', 'GameTicketsController')->name('game-tickets');
+        Route::get('/view/{ticket}', 'ShowController')->name('show');
+    });
 //
 //
 //    // Users (Пользователи) - TODO

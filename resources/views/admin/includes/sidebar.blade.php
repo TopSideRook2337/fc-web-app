@@ -93,6 +93,47 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Схемы стадионов -->
+                <li class="nav-item {{ request()->routeIs('admin.stadium-schemes.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.stadium-schemes.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-map"></i>
+                        <p>
+                            Схемы стадионов
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.stadium-schemes.index') }}" class="nav-link {{ request()->routeIs('admin.stadium-schemes.index') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Список схем</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.stadium-schemes.upload') }}" class="nav-link {{ request()->routeIs('admin.stadium-schemes.upload') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-upload"></i>
+                                <p>Загрузить схему</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Заказы -->
+                <li class="nav-item">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>Заказы</p>
+                    </a>
+                </li>
+
+                <!-- Билеты -->
+                <li class="nav-item">
+                    <a href="{{ route('admin.tickets.index') }}" class="nav-link {{ request()->routeIs('admin.tickets.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>Билеты</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

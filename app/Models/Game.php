@@ -22,4 +22,9 @@ class Game extends Model
     {
         return $this->belongsTo(Stadium::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'game_id');
+    }
 }

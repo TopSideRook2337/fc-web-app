@@ -265,14 +265,29 @@
         font-weight: 500;
     }
     
-    .status-paid {
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--accent-success);
+    .status-cart {
+        background: rgba(107, 114, 128, 0.1);
+        color: #6B7280;
     }
     
     .status-pending {
         background: rgba(245, 158, 11, 0.1);
         color: var(--accent-warning);
+    }
+    
+    .status-paid {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent-success);
+    }
+    
+    .status-cancelled {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--accent-danger);
+    }
+    
+    .status-expired {
+        background: rgba(107, 114, 128, 0.1);
+        color: #6B7280;
     }
     
     .user-avatar {
@@ -440,12 +455,18 @@
                                         </td>
                                         <td style="text-align: center; font-weight: 600;">{{ number_format($order->total_amount, 0, ',', ' ') }} ₽</td>
                                         <td style="text-align: center;">
-                                            <span class="status-badge {{ $order->status === 'paid' ? 'status-paid' : 'status-pending' }}">
-                                                @if($order->status === 'paid')
-                                                    <i class="fas fa-check-circle"></i> Оплачен
-                                                @else
-                                                    <i class="fas fa-hourglass-half"></i> Ожидает
-                                                @endif
+                                            @php
+                                                $statusConfig = [
+                                                    'cart' => ['class' => 'status-cart', 'icon' => 'fas fa-shopping-cart', 'text' => 'Корзина'],
+                                                    'pending' => ['class' => 'status-pending', 'icon' => 'fas fa-hourglass-half', 'text' => 'Ожидает оплаты'],
+                                                    'paid' => ['class' => 'status-paid', 'icon' => 'fas fa-check-circle', 'text' => 'Оплачен'],
+                                                    'cancelled' => ['class' => 'status-cancelled', 'icon' => 'fas fa-times-circle', 'text' => 'Отменен'],
+                                                    'expired' => ['class' => 'status-expired', 'icon' => 'fas fa-clock', 'text' => 'Истек']
+                                                ];
+                                                $status = $statusConfig[$order->status] ?? ['class' => 'status-pending', 'icon' => 'fas fa-question-circle', 'text' => $order->status];
+                                            @endphp
+                                            <span class="status-badge {{ $status['class'] }}">
+                                                <i class="{{ $status['icon'] }}"></i> {{ $status['text'] }}
                                             </span>
                                         </td>
                                         <td style="text-align: center;">{{ $order->created_at->format('d.m.Y H:i') }}</td>
