@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function loyaltyPoints()
+    {
+        return $this->hasMany(LoyaltyPoint::class, 'related_order_id');
+    }
 }
