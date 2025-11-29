@@ -24,13 +24,28 @@ Route::group(['namespace' => 'App\Http\Controllers\Api\Posts', 'prefix' => 'post
 });
 Route::group(['namespace' => 'App\Http\Controllers\Api\Games', 'prefix' => 'games',], function () {
     Route::get('/', 'IndexController')->name('api.games.index');
+    // ⚠️ ВАЖНО: Более специфичные маршруты должны быть ВЫШЕ общего маршрута /{id}
+    // Иначе Laravel будет пытаться найти матч с id="sectors" и вернёт 404
+    Route::get('/{id}/sectors', 'SectorsController')->name('api.games.sectors');
+    Route::get('/{id}/sectors/{sectorId}/seats', 'SectorSeatsController')->name('api.games.sectors.seats');
+    // Общий маршрут для детальной карточки матча - в конце
+    Route::get('/{id}', 'ShowController')->name('api.games.show');
 });
 Route::group(['namespace' => 'App\Http\Controllers\Api\Seats', 'prefix' => 'seats',], function () {
     Route::get('/{match}', 'IndexController')->name('api.seats.index');
 });
+// Заказы - публичные эндпоинты (без авторизации для MVP)
+Route::group(['namespace' => 'App\Http\Controllers\Api\Orders', 'prefix' => 'orders',], function () {
+    Route::post('/', 'StoreController')->name('api.orders.store');
+    // ⚠️ ВАЖНО: Специфичные маршруты должны быть ВЫШЕ общего /{id}
+    Route::post('/{id}/cancel', 'CancelController')->name('api.orders.cancel');
+    Route::post('/{id}/pay', 'PayController')->name('api.orders.pay');
+    Route::get('/{id}', 'ShowController')->name('api.orders.show');
+});
+
+// Заказы пользователя - требуют авторизацию
 Route::middleware('auth:sanctum')->group(function () {
     Route::group(['namespace' => 'App\Http\Controllers\Api\Orders', 'prefix' => 'orders',], function () {
         Route::get('/', 'IndexController')->name('api.orders.index');
-        Route::post('/', 'StoreController')->name('api.orders.store');
     });
 });

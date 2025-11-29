@@ -83,19 +83,23 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         Route::get('/{game}', 'GameTicketsController')->name('game-tickets');
         Route::get('/view/{ticket}', 'ShowController')->name('show');
     });
-//
-//
-//    // Users (Пользователи) - TODO
-//
-//    Route::group(['namespace' => 'App\Http\Controllers\Admin\Users', 'prefix' => 'users', 'as' => 'users.'], function () {
-//        Route::get('/', 'IndexController')->name('admin.users.index');
-//        Route::get('/create', 'CreateController')->name('admin.users.create');
-//        Route::post('/', 'StoreController')->name('admin.users.store');
-//        Route::get('/{user}', 'ShowController')->name('admin.users.show');
-//        Route::get('/{user}/edit', 'EditController')->name('admin.users.edit');
-//        Route::put('/{user}', 'UpdateController')->name('admin.users.update');
-//        Route::delete('/{user}', 'DestroyController')->name('admin.users.destroy');
-//    });
+
+    // Users (Пользователи)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Users', 'prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/create', 'CreateController')->name('create');
+        Route::post('/', 'StoreController')->name('store');
+        Route::get('/{user}', 'ShowController')->name('show');
+        Route::get('/{user}/edit', 'EditController')->name('edit');
+        Route::put('/{user}', 'UpdateController')->name('update');
+        Route::delete('/{user}', 'DestroyController')->name('destroy');
+    });
+
+    // Loyalty Points (Бонусные баллы)
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\LoyaltyPoints', 'prefix' => 'loyalty-points', 'as' => 'loyalty-points.'], function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::get('/{loyaltyPoint}', 'ShowController')->name('show');
+    });
 
 });
 

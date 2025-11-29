@@ -124,7 +124,7 @@
 | **LoyaltyPoints (Бонусы):** | |
 | Создать контроллеры: `Admin\LoyaltyPoints\IndexController, ShowController` | ☐ |
 | Создать фильтр: `Admin\Filters\LoyaltyPoints\LoyaltyPointFilter` | ☐ |
-| Создать шаблоны: `admin.loyalty-points.index, show` | ☐ |
+| Создать шаблоны: `admin.loyaltypoints.index, show` | ☐ |
 | **Общие компоненты:** | |
 | Создать базовый layout: `admin.layouts.app` | ✅ |
 | Создать includes: `admin.includes.header, sidebar, footer` | ✅ |
@@ -326,3 +326,29 @@ resources/views/admin/
 1. Сохрани файл как `PROJECT-TODO.md` в корне проекта.
 2. Отмечай `[x]` выполненные задачи.
 3. Обновляй при необходимости.
+
+---
+
+## Нужно реализовать в срочном порядке
+
+1) API: Игры (Games)
+- Добавить `GET /api/games/{id}` — детальная карточка матча (стадион, статус, время, опционально категории/цены).
+- Доработать `GET /api/games` — фильтры (`status`, `date_from`, `date_to`, `stadium_id`), пагинация (`page`, `per_page`), единый формат ответа (`data`, `meta`).
+
+2) API: Секторы и места
+- `GET /api/games/{id}/sectors` — список секторов матча с базовыми данными и доступностью.
+- `GET /api/games/{id}/sectors/{sectorId}/seats` — места сектора (координаты, доступность, фильтр `onlyAvailable`).
+- Пересмотреть текущий `GET /api/seats/{match}`: добавить `onlyAvailable`, `groupBy=sector`, учитывать `reservation_expires_at`.
+
+3) API: Корзина/Заказы
+- Реализовать `POST /api/orders` — создание корзины/резерва с транзакциями, проверками и `reservation_expires_at`.
+- `GET /api/orders/{id}` — детальный заказ с таймерами резерва, билетами, суммой.
+- `POST /api/orders/{id}/cancel` — отмена из `cart|pending`.
+- `POST /api/orders/{id}/pay` и `POST /api/payments/webhook` — интеграция платежей (dev: мок).
+
+4) Аутентификация для SPA
+- Настроить Sanctum-поток (cookie) или токены; эндпоинты `auth/login`, `auth/register`, `auth/logout`, `auth/me` (если SPA).
+
+5) Почта/QR/Бонусы
+- Возвращать в API ссылки на QR для оплаченных билетов (защищённо).
+- Эндпоинты истории бонусов и расчёт применения к заказу (опционально).

@@ -134,6 +134,41 @@
                         <p>Билеты</p>
                     </a>
                 </li>
+
+                <!-- Пользователи -->
+                @if(auth()->user()->role === 'admin')
+                <li class="nav-item {{ request()->routeIs('admin.users.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Пользователи
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.index') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Список пользователей</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.create') }}" class="nav-link {{ request()->routeIs('admin.users.create') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user-plus"></i>
+                                <p>Создать пользователя</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                <!-- Бонусные баллы -->
+                <li class="nav-item">
+                    <a href="{{ route('admin.loyalty-points.index') }}" class="nav-link {{ request()->routeIs('admin.loyalty-points.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-coins"></i>
+                        <p>Бонусные баллы</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
